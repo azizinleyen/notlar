@@ -1,0 +1,25 @@
+node_modules/
+release/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.log
+*.asar
+*.exe
+*.msi
+*.pfx
+*.p12
+*client_secret*.json
+*oauth*.json
+.tmp-*
+*.tmp
+.DS_Store
+.vscode/
+
+# out/ is intentionally committed: it contains the current installed version.
