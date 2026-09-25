@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+  }
+  input,
+  textarea {
+    user-select: text;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply tracking-[-0.01em];
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-surface border-hairline;
+  }
+  .icon-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-lg text-muted
+           transition-colors hover:bg-pill hover:text-ink;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full bg-pill px-2 py-[2px] text-[11px] font-medium text-inkSoft;
+  }
+  .nav-item {
+    @apply flex w-full items-center gap-2 rounded-lg px-2 py-[7px] text-left text-[13px] text-inkSoft
+           transition-colors hover:bg-pill;
+  }
+  .nav-item-active {
+    @apply bg-pill text-ink;
+  }
+  .section-label {
+    @apply px-2 text-[11px] font-semibold uppercase tracking-[0.06em] text-faint;
+  }
+}
+
+/* --- ince, sakin scrollbar ------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #e0ded8;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #cfccc4;
+}
+
+/* --- canli kayit noktasi --------------------------------------------------- */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+  }
+}
+.live-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+/* --- ses barlari ----------------------------------------------------------- */
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.eq-bar {
+  transform-origin: center;
+  animation: eq 1s ease-in-out infinite;
+}
+
+/* --- panel kaydirma animasyonu -------------------------------------------- */
+@keyframes slide-in-right {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.slide-in-right {
+  animation: slide-in-right 0.18s ease-out;
+}
+
+/* --- TipTap (ham notlar editoru) ----------------------------------------- */
+.tiptap-notes p {
+  margin: 0 0 6px;
+}
+.tiptap-notes p:last-child {
+  margin-bottom: 0;
+}
+.tiptap-notes ul,
+.tiptap-notes ol {
+  margin: 0 0 6px;
+  padding-left: 20px;
+}
+.tiptap-notes ul {
+  list-style: disc;
+}
+.tiptap-notes ol {
+  list-style: decimal;
+}
+.tiptap-notes li {
+  margin: 2px 0;
+}
+.tiptap-notes li p {
+  margin: 0;
+}
+.tiptap-notes h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 10px 0 5px;
+  color: #1f1e1c;
+}
+.tiptap-notes h3 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 8px 0 4px;
+  color: #1f1e1c;
+}
+.tiptap-notes blockquote {
+  border-left: 2px solid #eceae5;
+  padding-left: 10px;
+  margin: 6px 0;
+  color: #8d8a83;
+}
+.tiptap-notes mark {
+  background: #fdf3c8;
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+}
+.tiptap-notes strong {
+  color: #1f1e1c;
+  font-weight: 600;
+}
+/* Placeholder */
+.tiptap-notes p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: #b4b1a9;
+}
+.tiptap-notes:focus {
+  outline: none;
+}

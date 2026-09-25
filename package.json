@@ -1,0 +1,112 @@
+{
+  "name": "notlar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local, AI-assisted meeting notes and transcription for Windows",
+  "main": "./out/main/index.js",
+  "author": "Notlar contributors",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "build:source": "electron-vite build",
+    "start": "electron-vite preview",
+    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.json",
+    "seed:demo": "node scripts/seed-demo.mjs",
+    "db:reset": "node scripts/db-reset.mjs",
+    "dist": "electron-builder --win --x64",
+    "dist:source": "electron-vite build && electron-builder --win --x64",
+    "test:ics": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-ics.mts",
+    "test:rules": "esbuild scripts/test-rules.mts --bundle --platform=node --format=esm --alias:@shared=./src/shared --outfile=.tmp-test-rules.mjs --log-level=warning && node .tmp-test-rules.mjs",
+    "test": "npm run test:ics && npm run test:rules && npm run test:prompt && npm run test:people && npm run test:export",
+    "test:prompt": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-prompt.mts",
+    "test:people": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-people.mts",
+    "test:export": "esbuild scripts/test-export.mts --bundle --platform=node --format=esm --alias:@shared=./src/shared --outfile=.tmp-test-export.mjs --log-level=warning && node .tmp-test-export.mjs"
+  },
+  "dependencies": {
+    "@tiptap/extension-highlight": "^2.11.5",
+    "@tiptap/extension-placeholder": "^2.11.5",
+    "@tiptap/react": "^2.11.5",
+    "@tiptap/starter-kit": "^2.11.5",
+    "better-sqlite3-multiple-ciphers": "^11.10.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.7.2",
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.13.1",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
+    "electron": "^33.3.1",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^2.3.0",
+    "lucide-react": "^0.469.0",
+    "postcss": "^8.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vite": "^5.4.14",
+    "zustand": "^5.0.3",
+    "better-sqlite3": "^11.10.0"
+  },
+  "build": {
+    "appId": "com.kisisel.notlar",
+    "productName": "Notlar",
+    "copyright": "Copyright (c) 2026 Notlar contributors",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "out/**/*",
+      "package.json",
+      "!**/*.map",
+      "!**/*.md",
+      "!{.git,.github,docs,scripts}/**",
+      "!build/**",
+      "!release/**"
+    ],
+    "extraResources": [
+      {
+        "from": "db",
+        "to": "db"
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/better-sqlite3-multiple-ciphers/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Notlar",
+      "artifactName": "Notlar-Setup-${version}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Notlar-Tasinabilir-${version}-${arch}.${ext}"
+    }
+  }
+}
