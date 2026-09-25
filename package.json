@@ -1,6 +1,6 @@
 {
   "name": "notlar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Local, AI-assisted meeting notes and transcription for Windows",
   "main": "./out/main/index.js",
@@ -106,7 +106,7 @@
       "artifactName": "Notlar-Setup-${version}-${arch}.${ext}"
     },
     "portable": {
-      "artifactName": "Notlar-Tasinabilir-${version}-${arch}.${ext}"
+      "artifactName": "Notlar-portable-${version}-${arch}.${ext}"
     }
   }
 }
