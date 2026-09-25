@@ -12,6 +12,12 @@ Notlar uses your computer's microphone and system audio without adding a bot to 
 | --- | --- | --- | --- |
 | Windows x64 | Electron, React, TypeScript | Local SQLite | MIT |
 
+## Application preview
+
+<img src="docs/notlar-overview.png" alt="Notlar meeting view with notes, AI summary, and transcript" width="600">
+
+[View the full-size screenshot](docs/notlar-overview.png)
+
 ## Contents
 
 - [Purpose](#purpose)
