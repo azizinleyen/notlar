@@ -1,5 +1,7 @@
 # Notlar
 
+<img src="build/icon.png" alt="Notlar app icon" width="84">
+
 **A Windows desktop app for recording meetings, turning speech into text, and keeping meeting notes organized.**
 
 Notlar uses your computer's microphone and system audio without adding a bot to the meeting. It transcribes speech and keeps the transcript alongside your own notes. With an AI provider configured, it can enrich those notes, prepare a meeting summary, and export the content to PDF or Word.
@@ -87,7 +89,7 @@ Notlar is an AI-assisted **vibe coding** project. The creator developed the conc
 
 ## Source code and development
 
-**Repository status:** The original TypeScript and React files in `src/` predate the Phase 1–3 fixes made to the installed app. The current app's runnable JavaScript, CSS, and HTML are in `out/`. `npm run dist` packages the current `out/` files. Running `npm run build` compiles the older `src/` files and overwrites the current fixes in `out/`. Bringing the two into sync is the project's main technical priority. Read the [source status](docs/SOURCE_STATUS.md) for details.
+**Repository status:** The original TypeScript and React files in `src/` predate the Phase 1–3 fixes made to the installed app. The current app's runnable JavaScript, CSS, and HTML are in `out/`. `npm run dist` packages the current `out/` files. `npm run build` now packages `out/` into an unpacked app without overwriting it. The explicit `build:source` and `dist:source` commands compile the older `src/` files and overwrite the current fixes in `out/`. Bringing the two into sync is the project's main technical priority. Read the [source status](docs/SOURCE_STATUS.md) for details.
 
 ```text
 src/       TypeScript and React development sources
@@ -103,7 +105,8 @@ Development commands:
 npm run dev        # development app based on src/
 npm run typecheck  # TypeScript checks
 npm test           # tests based on src/
-npm run dist       # Windows package from the current out/ files
+npm run build      # Unpacked Windows app from the current out/ files
+npm run dist       # Windows installer and portable EXE from out/
 ```
 
 `npm run dev` and `npm test` do not verify every behavior in the current `out/` version. Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing changes.

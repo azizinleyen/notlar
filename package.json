@@ -7,10 +7,10 @@
   "author": "Notlar contributors",
   "scripts": {
     "dev": "electron-vite dev",
-    "build": "electron-vite build",
+    "build": "electron-builder --dir --win --x64",
     "build:source": "electron-vite build",
     "start": "electron-vite preview",
-    "rebuild": "electron-rebuild -f -w better-sqlite3",
+    "rebuild": "electron-rebuild -f -w better-sqlite3-multiple-ciphers",
     "typecheck": "tsc --noEmit -p tsconfig.node.json && tsc --noEmit -p tsconfig.json",
     "seed:demo": "node scripts/seed-demo.mjs",
     "db:reset": "node scripts/db-reset.mjs",
