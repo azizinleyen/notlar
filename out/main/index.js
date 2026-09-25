@@ -6324,8 +6324,18 @@ function createWindow() {
     items.push({ role: "selectAll", label: "Tümünü seç" });
     electron.Menu.buildFromTemplate(items).popup({ window: mainWindow });
   });
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    void electron.shell.openExternal(details.url);
+  mainWindow.webContents.on("will-navigate", (event) => {
+    event.preventDefault();
+  });
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    try {
+      const externalUrl = new URL(url);
+      if (externalUrl.protocol === "https:" && externalUrl.hostname) {
+        void electron.shell.openExternal(externalUrl.toString());
+      }
+    } catch {
+      // Reject malformed URLs and non-web protocols.
+    }
     return { action: "deny" };
   });
   const devUrl = process.env["ELECTRON_RENDERER_URL"];
