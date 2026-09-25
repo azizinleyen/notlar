@@ -16,7 +16,7 @@ npm ci
 npm run dist
 ```
 
-The outputs are written to `release/`: `Notlar-Setup-0.1.0-x64.exe` and `Notlar-Tasinabilir-0.1.0-x64.exe`. The `release/` directory is excluded from the source repository. Binaries can be published separately under GitHub Releases.
+The outputs are written to `release/`: `Notlar-Setup-0.1.1-x64.exe` and `Notlar-portable-0.1.1-x64.exe`. The `release/` directory is excluded from the source repository. Binaries can be published separately under GitHub Releases.
 
 `npm run build` creates an unpacked app from the current `out/` files. `npm run build:source` and `npm run dist:source` compile the older TypeScript sources and overwrite `out/`. Use `npm run build` or `npm run dist` for the current features until the gap described in [source status](SOURCE_STATUS.md) is resolved.
 
