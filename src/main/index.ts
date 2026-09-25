@@ -154,8 +154,19 @@ function createWindow(): void {
 
   mainWindow.on('ready-to-show', () => mainWindow?.show())
 
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    void shell.openExternal(details.url)
+  mainWindow.webContents.on('will-navigate', (event) => {
+    event.preventDefault()
+  })
+
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    try {
+      const externalUrl = new URL(url)
+      if (externalUrl.protocol === 'https:' && externalUrl.hostname) {
+        void shell.openExternal(externalUrl.toString())
+      }
+    } catch {
+      // Reject malformed URLs and non-web protocols.
+    }
     return { action: 'deny' }
   })
 
