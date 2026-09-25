@@ -4,6 +4,8 @@
 
 Notlar uses your computer's microphone and system audio without adding a bot to the meeting. It transcribes speech and keeps the transcript alongside your own notes. With an AI provider configured, it can enrich those notes, prepare a meeting summary, and export the content to PDF or Word.
 
+**Download for Windows:** [Installer (.exe)](https://github.com/azizinleyen/notlar/releases/download/v0.1.0/Notlar-Setup-0.1.0-x64.exe) | [Portable (.exe)](https://github.com/azizinleyen/notlar/releases/download/v0.1.0/Notlar-portable-0.1.0-x64.exe) | [Release notes](https://github.com/azizinleyen/notlar/releases/tag/v0.1.0)
+
 | Platform | Interface | Database | License |
 | --- | --- | --- | --- |
 | Windows x64 | Electron, React, TypeScript | Local SQLite | MIT |
@@ -34,7 +36,7 @@ Notlar brings meeting conversations, notes written during the meeting, and the r
 
 ## Installation
 
-If a Windows installer has been published, download `Notlar-Setup-...exe` from the repository's **Releases** page and run it. A portable `Notlar-Tasinabilir-...exe` build can also be produced. Installer binaries are kept out of the source repository.
+Download and run the [Windows installer](https://github.com/azizinleyen/notlar/releases/download/v0.1.0/Notlar-Setup-0.1.0-x64.exe). For use without installation, download the [portable build](https://github.com/azizinleyen/notlar/releases/download/v0.1.0/Notlar-portable-0.1.0-x64.exe). Both files are attached to the [v0.1.0 release](https://github.com/azizinleyen/notlar/releases/tag/v0.1.0); installer binaries are kept out of the source repository.
 
 To build an installer from this repository, use Node.js and npm on Windows:
 
